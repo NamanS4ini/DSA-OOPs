@@ -32,7 +32,7 @@ Example for a **stack implementation**:
 ## ✅ Progress Log
 | Date       | Topic Covered        | Code Link |
 |------------|----------------------|-----------|
-| YYYY-MM-DD | Example: Linked List | [linkedlist.cpp](DSA/LinkedLists/linkedlist.cpp) |
+| YYYY-MM-DD | Example: Linked List | [linkedlist.cpp](DSA/1.LinkedLists/LinkedList.cpp) |
 
 I'll update this weekly to track overall progress.
 
