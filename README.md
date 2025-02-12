@@ -28,6 +28,8 @@ Each folder contains C++ implementations. I aim to push **at least one concept/p
 |------------|----------------------|-----------|
 | 06-02-2025 | Linked List (create, insert, delete) | [linkedlist.cpp](DSA/1.LinkedLists/LinkedList.cpp) |
 | 10-02-2025 | Queues (create, insert, delete) | [queues.cpp](DSA/2.Queues/queues.cpp) |
+| 11-02-2025 | Binary Tree | [binaryTree.cpp](DSA/3.Trees/binaryTree.cpp) |
+| 12-02-2025 | Binary Search Tree (create, insert) | [binarySearchTree.cpp](DSA/3.Trees/binarySearchTree.cpp) |
 
 
 ---
