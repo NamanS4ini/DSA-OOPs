@@ -59,7 +59,48 @@ class BinarySearchTree{
     }
     // Complete this function
     Node* deleteByKey(Node* root, int key){
-
+        if (root == NULL)
+        {
+            return NULL;
+        }
+        if (key < root->data)
+        {
+            root->left = deleteByKey(root->left, key);
+        }
+        else if (key > root->data)
+        {
+            root->right = deleteByKey(root->right, key);
+        }
+        else
+        {
+            if (root->left == NULL)
+            {
+                Node* temp = root->right;
+                delete(root);
+                return temp;
+            }
+            else if (root->right == NULL)
+            {
+                Node* temp = root->left;
+                delete(root);
+                return temp;
+            }
+            else
+            {
+                Node* successor = findSuccessor(root->right);
+                root->data = successor->data;
+                root->right = deleteByKey(root->right, successor->data);
+            }
+        }
+        return root;
+    }
+    Node* findSuccessor(Node* root){
+        if (root->left == NULL)
+        {
+            return root;
+        }
+        return findSuccessor(root->left);
+        
     }
 
 public:
@@ -113,7 +154,7 @@ int main(){
     tree.preOrderTraversal();
     std::cout << "postOrder: ";
     tree.postOrderTraversal();
-    tree.deleteNode(5);
+    tree.deleteNode(6);
     std::cout << "inOrder: ";
     tree.inOrderTraversal();
 }
