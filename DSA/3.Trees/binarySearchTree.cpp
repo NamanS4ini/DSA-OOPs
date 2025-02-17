@@ -103,7 +103,7 @@ class BinarySearchTree{
         
     }
 
-public:
+    public: 
     BinarySearchTree() : root(NULL) {}
 
     void insert(int value){
