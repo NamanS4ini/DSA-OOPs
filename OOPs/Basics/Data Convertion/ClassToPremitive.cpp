@@ -56,30 +56,26 @@ public:
         this->minutes += minutes;
         normalize();
     }
-    Time operator+(const Time &t) const
-    {
-        Time temp(this->hours, this->minutes);
-        temp.addTime(t.hours, t.minutes);
-        return temp;
+    operator int(){
+        return (hours*60) + minutes;
     }
-    Time operator-(const Time &t) const
-    {
-        Time temp(this->hours, this->minutes);
-        temp.addTime(-t.hours, -t.minutes);
-        return temp;
+    operator string(){
+        return "Time is good";
     }
 };
 
 int main()
 {
-    Time t1(10, 15);
-    t1.displayTime();
-    Time t2(5, 45);
-    t2.displayTime();
-    Time t3 = t1 + t2;
-    t3.displayTime();
+    //Primitive to user defined
 
     int dur = 77;
-    Time t4= 55;
-    t4.displayTime();
+    Time t1= dur;
+    t1.displayTime();
+
+    // class obj to user defined
+    Time t2(12,12);
+    int duration = t2;
+    string quote = t2;
+    cout<< duration << quote;
+
 }
