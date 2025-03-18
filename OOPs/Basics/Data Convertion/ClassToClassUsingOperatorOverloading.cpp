@@ -1,5 +1,8 @@
 #include <iostream>
 using namespace std;
+
+class Time12; // Forward declaration so that Time24 knows that Time12 class exists while using "operator Time12(){...}" Line: 64
+
 class Time24
 {
 public:
@@ -43,11 +46,6 @@ public:
         this->minutes = minutes;
         normalize();
     }
-    Time24(Time12 t)
-    {
-        this->hours = t.hours;
-        this->minutes = t.minutes;
-    }
     void displayTime()
     {
         hours < 10 ? cout << "0" << hours << ":" : cout << hours << ":";
@@ -63,6 +61,7 @@ public:
         this->minutes += minutes;
         normalize();
     }
+    operator Time12(); // Can Not assign logic here yet coz compiler does not know yet that what Time12 is (only knows that it exists) Line: 132
 };
 class Time12
 {
@@ -107,13 +106,6 @@ public:
         this->minutes = minutes;
         normalize();
     }
-    // Method 1 using constructor
-    Time12(Time24 t)
-    {
-        this->hours = t.hours;
-        this->minutes = t.minutes;
-        normalize();
-    }
     void displayTime()
     {
         hours < 10 ? cout << "0" << hours << ":" : cout << hours << ":";
@@ -129,12 +121,24 @@ public:
         this->minutes += minutes;
         normalize();
     }
+    operator Time24() // No need for forward declaration as Compiler already knows what Time24 is and how to assign to it.
+    { 
+        Time24 t(this->hours, this->minutes);
+        return t;
+    }
 };
+
+// Logic after Time12 class so now compiler knows that how to handel the logic
+Time24::operator Time12()
+{
+    Time12 t(this->hours, this->minutes);
+    return t;
+}
 
 int main()
 {
-    // Uses Constructor to convert Time24 to Time12
-    Time24 t1(23,11);
+    // Uses Operator Overloading to convert Time24 to Time12
+    Time24 t1(23, 11);
     Time12 t2 = t1;
     t2.displayTime();
 }
